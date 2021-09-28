@@ -1,25 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useEffect, useState} from 'react';
+import FilmList from "./Favourite/FilmList";
+import  './index.css'
+const App = () => {
+const [FavouriteFilms, setFavouriteFilms] = useState(null);
+const [isLoaded, setLoaded] = useState(false);
+	useEffect( ()=> {
+		 fetch('http://www.omdbapi.com/?s=love&apikey=d9cbe012&')
+			.then((response) => {
+				return response.json();
+			})
+			.then((data) => {
+				setFavouriteFilms([...data.Search]);
+				setLoaded(true);
+				console.log(data.Search);
+			});
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+	}, []);
+
+
+
+	return (
+		<main className='favourite'>
+			<div className="container">
+				<h1>Favourite Movies</h1>
+				{isLoaded ? <FilmList FavouriteFilms={FavouriteFilms}/> : <h2>Skeleton</h2>}
+			</div>
+		</main>
+	);
+};
 
 export default App;
