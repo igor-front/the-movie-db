@@ -1,31 +1,23 @@
-import React, {useEffect, useState} from 'react';
-import FilmList from "./Favourite/FilmList";
+import React from 'react';
+
 import  './index.css'
+import {Switch, Route} from "react-router-dom";
+import Favourite from "./Favourite";
+import Popular from "./Popular";
+import Navbar from "./Navbar";
+import TvShows from "./TvShows";
 const App = () => {
-const [FavouriteFilms, setFavouriteFilms] = useState(null);
-const [isLoaded, setLoaded] = useState(false);
-	useEffect( ()=> {
-		 fetch('http://www.omdbapi.com/?s=love&apikey=d9cbe012&')
-			.then((response) => {
-				return response.json();
-			})
-			.then((data) => {
-				setFavouriteFilms([...data.Search]);
-				setLoaded(true);
-				console.log(data.Search);
-			});
-
-	}, []);
-
-
 
 	return (
-		<main className='favourite'>
-			<div className="container">
-				<h1>Favourite Movies</h1>
-				{isLoaded ? <FilmList FavouriteFilms={FavouriteFilms}/> : <h2>Skeleton</h2>}
-			</div>
-		</main>
+		<>
+			<Navbar/>
+
+		<Switch>
+			<Route path='/' exact render={()=> <Favourite/>}/>
+			<Route path='/popular' render={()=> <Popular/>}/>
+			<Route path='/tvshows' render={()=> <TvShows/>}/>
+		</Switch>
+		</>
 	);
 };
 

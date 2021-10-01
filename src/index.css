@@ -9,7 +9,6 @@
   min-height: 600px;
   margin: 0 auto;
   background-color: white;
-  border: 1px solid black;
   border-radius: 15px;
   padding: 20px;
 ;
@@ -33,7 +32,7 @@ img {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center;
 }
 .favourite__item {
   width: 30%;
@@ -44,7 +43,7 @@ img {
   align-items: center;
   justify-content: space-between;
   padding: 10px 10px 20px 10px;
-  margin-bottom: 10px;
+  margin: 10px 20px 10px;
 }
 .film {
   display: flex;
@@ -64,4 +63,82 @@ img {
 
 .mb-20 {
   margin-bottom: 20px;
+}
+
+.btns {
+  display: flex;
+  flex-direction: row;
+  margin: 30px auto;
+  justify-content: center;
+}
+
+.btns button {
+  width: 200px;
+  height: 50px;
+  margin: 0 20px;
+}
+
+.popup__wrapper {
+  /*position: fixed;*/
+  width: 100%;
+  height: 100%;
+  /*top: 0;*/
+  /*background: rgba(0,0,0,0.7);*/
+  /*transition: opacity 0.3s ease;*/
+}
+.popup__wrapper {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  z-index: 10;
+  background: rgba(0,0,0,0.7);
+  transition: opacity 0.3s ease;
+}
+.opacity {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  background: rgba(0,0,0,0.7);
+  transition: opacity 0.3s ease;
+  z-index: 0;
+}
+
+.popup .film {
+  margin: 0 auto;
+  margin-top: 200px;
+  width: 1000px;
+  display: flex;
+  flex-direction: row;
+  z-index: 10;
+  background-color: lightgray;
+}
+.film__left{
+  width: 50%;
+
+}
+.film__left img {
+  width: 400px;
+  height: 500px;
+}
+.film__right {
+  padding: 20px;
+  width: 50%;
+}
+
+.navbar__menu {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  background-color: lavender;
+}
+
+.navbar__item a {
+  font-size: 24px;
+  font-family: sans-serif;
+  margin: 20px;
+  text-decoration: none;
 }
